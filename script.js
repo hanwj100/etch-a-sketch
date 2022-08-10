@@ -20,8 +20,8 @@ function createGrid(numSides = 16) {
         cell.addEventListener('mouseover', () => colorInCell(cell.id));
 
         //cell styling
-        cell.style.border = "solid";
-        cell.style.padding = "10px";
+        cell.style.border = "thin solid black";
+        cell.style.padding = `${grid.style.width/numSides}`;
 
         grid.appendChild(cell);
     }
@@ -62,7 +62,7 @@ function resizeGrid() {
     else{
         let grid = document.querySelector("#grid");
         let body = document.querySelector("body");
-        
+
         body.removeChild(grid);
         createGrid(numSides);
     }
