@@ -1,10 +1,28 @@
-createResizeButton();
-createGrid();
-let body = document.querySelector("body");
-body.style.display = "flex";
-body.style.flexDirection = "column";
-body.style.alignItems = "center";
+main();
 
+function main() {
+    createTitle();
+    createResizeButton();
+    createGrid();
+    styleBody();
+}
+
+function styleBody() {
+    const body = document.querySelector("body");
+    body.style.display = "flex";
+    body.style.flexDirection = "column";
+    body.style.alignItems = "center";
+    body.style.backgroundColor = "red";
+}
+
+function createTitle() {
+    const header = document.createElement("header");
+    header.innerHTML = "<h1>Etch A Sketch V1<h1>";
+    header.style.color = "gold";
+
+    const body = document.querySelector("body");
+    body.appendChild(header);
+}
 
 function createGrid(numSides = 16) {
     const grid = document.createElement("div");
@@ -26,6 +44,7 @@ function createGrid(numSides = 16) {
         //cell styling
         cell.style.border = "thin solid black";
         cell.style.padding = `${grid.style.width/numSides}`;
+        cell.style.backgroundColor = "ivory";
 
         grid.appendChild(cell);
     }
@@ -39,21 +58,23 @@ function createGrid(numSides = 16) {
 //colors in a selected cell
 function colorInCell(cellID) {
     const cell = document.querySelector("#" + cellID);
-    if (cell.style.backgroundColor == "") {
+    if (cell.style.backgroundColor == "ivory") {
         cell.style.backgroundColor = "black";
     }
 }
+
 
 function createResizeButton() {
     const btn = document.createElement("button");
     btn.id = "resizeBtn"
     btn.textContent = "Resize";
+    btn.style.margin = "2vh"
     btn.addEventListener("click", () => resizeGrid());
 
     const body = document.querySelector("body");
     body.appendChild(btn);
-
 }
+
 
 function resizeGrid() {
     let numSides = + prompt("Please enter the number of squares per side: \n" +
@@ -66,11 +87,10 @@ function resizeGrid() {
         resizeGrid();
     }
     else{
-        let grid = document.querySelector("#grid");
-        let body = document.querySelector("body");
+        const grid = document.querySelector("#grid");
+        const body = document.querySelector("body");
 
         body.removeChild(grid);
         createGrid(numSides);
     }
-    
 }
