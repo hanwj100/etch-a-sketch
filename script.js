@@ -55,7 +55,7 @@ function createResizeButton() {
 function resizeGrid() {
     let numSides = + prompt("Please enter the number of squares per side: \n" +
                             "(i.e. Enter 20 for a 20x20 grid. Maximum 100.)");
-    if(typeof numSides !== "number" || numSides < 0 || numSides > 100) {
+    if(typeof numSides !== "number" || numSides <= 0 || numSides > 100) {
         alert("Please enter a valid number.");
         resizeGrid();
     }
