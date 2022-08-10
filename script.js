@@ -1,5 +1,9 @@
 createResizeButton();
 createGrid();
+let body = document.querySelector("body");
+body.style.display = "flex";
+body.style.flexDirection = "column";
+body.style.alignItems = "center";
 
 
 function createGrid(numSides = 16) {
@@ -40,7 +44,6 @@ function colorInCell(cellID) {
     }
 }
 
-
 function createResizeButton() {
     const btn = document.createElement("button");
     btn.id = "resizeBtn"
@@ -55,7 +58,10 @@ function createResizeButton() {
 function resizeGrid() {
     let numSides = + prompt("Please enter the number of squares per side: \n" +
                             "(i.e. Enter 20 for a 20x20 grid. Maximum 100.)");
-    if(typeof numSides !== "number" || numSides <= 0 || numSides > 100) {
+    if(numSides == 0){
+        return;
+    }
+    else if(isNaN(numSides) || numSides < 0 || numSides > 100) {
         alert("Please enter a valid number.");
         resizeGrid();
     }
