@@ -12,10 +12,10 @@ function createGrid() {
     }
 }
 
+//colors in a selected cell
 function colorIn(cellID) {
     const cell = document.querySelector("#" + cellID);
     if (cell.style.backgroundColor == "") {
         cell.style.backgroundColor = "black";
     }
 }
-
