@@ -1,4 +1,4 @@
-createButton();
+createResizeButton();
 createGrid();
 
 function createGrid() {
@@ -9,7 +9,7 @@ function createGrid() {
         const cell = document.createElement("div");
         cell.className = "cell";
         cell.id = `cell${i}`
-        cell.addEventListener('mouseover', () => colorIn(cell.id));
+        cell.addEventListener('mouseover', () => colorInCell(cell.id));
         grid.appendChild(cell);
     }
 
@@ -18,7 +18,7 @@ function createGrid() {
 }
 
 //colors in a selected cell
-function colorIn(cellID) {
+function colorInCell(cellID) {
     const cell = document.querySelector("#" + cellID);
     if (cell.style.backgroundColor == "") {
         cell.style.backgroundColor = "black";
